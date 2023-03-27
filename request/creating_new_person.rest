@@ -1,8 +1,7 @@
-POST http://localhost:3003/api/persons
+POST http://localhost:3007/api/persons
 Content-Type: application/json
 
 {
-  "id": "9",
   "name": "VS code rest client is a pretty handy tool",
   "number": "+8908098908"
 }
