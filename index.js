@@ -15,7 +15,7 @@ app.use(express.static('build'))
 
 let persons = []
 app.get('/api/persons', (request, response) => {
-  Person.find({}).then(notes => {
+  Person.find({}).then(persons => {
     response.json(persons)
   })
 })
