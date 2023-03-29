@@ -11,9 +11,18 @@ const unknownEndpoint = (request, response) => {
 }
 app.use(cors())
 app.use(express.json())
-app.use(morgan('tiny'))
 app.use(express.static('build'))
 
+morgan.token('post', (request) => {
+  if (request.method === 'POST')
+    return JSON.stringify(request.body)
+  else
+    return ''
+})
+
+morgan.format('postFormat', ':method :url :status :res[content-length] - :response-time ms :post')
+
+app.use(morgan('postFormat'))
 
 app.get('/api/persons', (request, response) => {
   Person.find({}).then(persons => {
